@@ -22,3 +22,4 @@ dependencyResolutionManagement {
 rootProject.name = "StudyRepo"
 include(":app")
 include(":kotlin:reflection")
+include(":room-demo")
