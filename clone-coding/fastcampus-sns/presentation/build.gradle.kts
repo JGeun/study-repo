@@ -1,5 +1,5 @@
 plugins {
-	alias(libs.plugins.android.application)
+	alias(libs.plugins.com.android.library)
 	alias(libs.plugins.jetbrains.kotlin.android)
 	alias(libs.plugins.compose.compiler)
 	alias(libs.plugins.kotlin.serialization)
@@ -8,17 +8,14 @@ plugins {
 }
 
 android {
-	namespace = "com.jgeun.fastcampus.sns.app"
+	namespace = "com.jgeun.fastcampus.sns.presentation"
 	compileSdk = 34
 
 	defaultConfig {
-		applicationId = "com.jgeun.fastcampus.sns.app"
 		minSdk = 26
-		targetSdk = 34
-		versionCode = 1
-		versionName = "1.0"
 
 		testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+		consumerProguardFiles("consumer-rules.pro")
 	}
 
 	buildTypes {
@@ -45,15 +42,8 @@ android {
 	}
 }
 
-composeCompiler {
-	reportsDestination = layout.buildDirectory.dir("compose_compiler")
-	stabilityConfigurationFile = rootProject.layout.projectDirectory.file("stability_config.conf")
-}
-
 dependencies {
-	implementation(project(":clone-coding:fastcampus-sns:presentation"))
 	implementation(project(":clone-coding:fastcampus-sns:domain"))
-	implementation(project(":clone-coding:fastcampus-sns:data"))
 
 	implementation(libs.androidx.core.ktx)
 	implementation(libs.androidx.lifecycle.runtime.ktx)
@@ -70,14 +60,6 @@ dependencies {
 	androidTestImplementation(libs.androidx.ui.test.junit4)
 	debugImplementation(libs.androidx.ui.tooling)
 	debugImplementation(libs.androidx.ui.test.manifest)
-
-	implementation(libs.datastore)
-
-	implementation(libs.retrofit)
-	implementation(libs.retrofit.converter.serialization)
-
-	implementation(libs.kotlinx.serialization.json)
-	implementation(libs.okhttp)
 
 	implementation(libs.hilt)
 	kapt(libs.hilt.compiler)
