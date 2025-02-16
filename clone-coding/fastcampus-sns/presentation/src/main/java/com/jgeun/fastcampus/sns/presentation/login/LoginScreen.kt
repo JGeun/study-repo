@@ -16,6 +16,8 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.lifecycle.viewmodel.compose.viewModel
 import com.jgeun.fastcampus.sns.presentation.component.FCButton
 import com.jgeun.fastcampus.sns.presentation.component.FCTextField
 import com.jgeun.fastcampus.sns.presentation.theme.ConnectedTheme
@@ -27,6 +29,20 @@ import com.jgeun.fastcampus.sns.presentation.theme.ConnectedTheme
  */
 @Composable
 fun LoginScreen(
+	viewModel: LoginViewModel = hiltViewModel()
+) {
+	LoginScreen(
+		id = "",
+		password = "",
+		onIdChange = {},
+		onPasswordChange = {},
+		onNavigateToSignUpScreen = { }
+	)
+
+}
+
+@Composable
+private fun LoginScreen(
 	id: String,
 	password: String,
 	onIdChange: (String) -> Unit,
@@ -70,7 +86,8 @@ fun LoginScreen(
 					style = MaterialTheme.typography.labelLarge
 				)
 				FCTextField(
-					modifier = Modifier.padding(top = 8.dp)
+					modifier = Modifier
+						.padding(top = 8.dp)
 						.fillMaxWidth(),
 					value = id,
 					onValueChange = onIdChange
@@ -82,7 +99,8 @@ fun LoginScreen(
 					style = MaterialTheme.typography.labelLarge
 				)
 				FCTextField(
-					modifier = Modifier.padding(top = 8.dp)
+					modifier = Modifier
+						.padding(top = 8.dp)
 						.fillMaxWidth(),
 					value = password,
 					onValueChange = onPasswordChange
@@ -90,7 +108,7 @@ fun LoginScreen(
 
 				FCButton(
 					modifier = Modifier
-						.padding(top  = 24.dp)
+						.padding(top = 24.dp)
 						.fillMaxWidth(),
 					text = "로그인",
 					onClick = {}
@@ -101,7 +119,7 @@ fun LoginScreen(
 					modifier = Modifier
 						.align(Alignment.CenterHorizontally)
 						.padding(bottom = 24.dp)
-						.clickable (onClick = onNavigateToSignUpScreen)
+						.clickable(onClick = onNavigateToSignUpScreen)
 				) {
 					Text(text = "Don't have an account? ")
 					Text(text = "Sign up", color = MaterialTheme.colorScheme.primary)

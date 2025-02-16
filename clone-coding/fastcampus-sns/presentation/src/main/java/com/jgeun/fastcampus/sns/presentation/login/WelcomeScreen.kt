@@ -26,7 +26,9 @@ import com.jgeun.fastcampus.sns.presentation.theme.ConnectedTheme
  * @created  2025/02/16
  */
 @Composable
-fun WelcomeScreen() {
+fun WelcomeScreen(
+	onNavigateToLoginScreen: () -> Unit
+) {
 	Surface {
 		Box(
 			modifier = Modifier.fillMaxSize(),
@@ -53,7 +55,7 @@ fun WelcomeScreen() {
 					.padding(bottom = 24.dp)
 					.align(alignment = Alignment.BottomCenter),
 				text = "로그인",
-				onClick = {}
+				onClick = onNavigateToLoginScreen
 			)
 		}
 	}
@@ -63,6 +65,8 @@ fun WelcomeScreen() {
 @Composable
 private fun WelcomeScreenPreview() {
 	ConnectedTheme {
-		WelcomeScreen()
+		WelcomeScreen(
+			onNavigateToLoginScreen = {}
+		)
 	}
 }
