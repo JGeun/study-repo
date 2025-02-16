@@ -1,7 +1,7 @@
 plugins {
 	alias(libs.plugins.com.android.library)
 	alias(libs.plugins.jetbrains.kotlin.android)
-	alias(libs.plugins.hilt)
+//	alias(libs.plugins.hilt)
 	id("kotlin-kapt")
 	alias(libs.plugins.kotlin.serialization)
 }
@@ -49,9 +49,9 @@ dependencies {
 	implementation(libs.retrofit)
 	implementation(libs.retrofit.converter.serialization)
 
-	implementation(libs.kotlinx.serialization.json)
-	implementation(libs.okhttp)
+//	implementation(libs.kotlinx.serialization.json)
+//	implementation(libs.okhttp)
 
-	implementation(libs.hilt)
-	kapt(libs.hilt.compiler)
+//	implementation(libs.hilt)
+//	kapt(libs.hilt.compiler)
 }
