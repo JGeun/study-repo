@@ -1,7 +1,7 @@
 plugins {
 	alias(libs.plugins.com.android.library)
 	alias(libs.plugins.jetbrains.kotlin.android)
-//	alias(libs.plugins.hilt)
+	alias(libs.plugins.hilt)
 	id("kotlin-kapt")
 	alias(libs.plugins.kotlin.serialization)
 }
@@ -36,6 +36,7 @@ android {
 }
 
 dependencies {
+	implementation(project(":clone-coding:fastcampus-sns:domain"))
 
 	implementation(libs.androidx.core.ktx)
 	implementation(libs.androidx.appcompat)
@@ -49,9 +50,9 @@ dependencies {
 	implementation(libs.retrofit)
 	implementation(libs.retrofit.converter.serialization)
 
-//	implementation(libs.kotlinx.serialization.json)
-//	implementation(libs.okhttp)
+	implementation(libs.kotlinx.serialization.json)
+	implementation(libs.okhttp)
 
-//	implementation(libs.hilt)
-//	kapt(libs.hilt.compiler)
+	implementation(libs.hilt)
+	kapt(libs.hilt.compiler)
 }

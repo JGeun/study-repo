@@ -51,7 +51,8 @@ composeCompiler {
 }
 
 dependencies {
-//	implementation(project(":clone-coding:fastcampus-sns:data"))
+	implementation(project(":clone-coding:fastcampus-sns:data"))
+	implementation(project(":clone-coding:fastcampus-sns:domain"))
 
 	implementation(libs.androidx.core.ktx)
 	implementation(libs.androidx.lifecycle.runtime.ktx)
