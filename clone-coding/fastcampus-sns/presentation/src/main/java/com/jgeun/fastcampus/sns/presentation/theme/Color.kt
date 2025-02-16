@@ -1,4 +1,4 @@
-package com.jgeun.fastcampus.sns.app.ui.theme
+package com.jgeun.fastcampus.sns.presentation.theme
 
 import androidx.compose.ui.graphics.Color
 
