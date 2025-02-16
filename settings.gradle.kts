@@ -23,3 +23,4 @@ rootProject.name = "StudyRepo"
 include(":app")
 include(":kotlin:reflection")
 include(":clone-coding:fastcampus-sns:app")
+include(":clone-coding:fastcampus-sns:data")
