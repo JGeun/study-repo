@@ -1,4 +1,4 @@
-package com.jgeun.fastcampus.sns.app
+package com.jgeun.fastcampus.sns.presentation.login
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -12,8 +12,15 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import com.jgeun.fastcampus.sns.presentation.theme.ConnectedTheme
+import dagger.hilt.android.AndroidEntryPoint
 
-class MainActivity : ComponentActivity() {
+/**
+ *
+ * @author   JGeun
+ * @created  2025/02/16
+ */
+@AndroidEntryPoint
+class LoginActivity : ComponentActivity() {
 	override fun onCreate(savedInstanceState: Bundle?) {
 		super.onCreate(savedInstanceState)
 		enableEdgeToEdge()

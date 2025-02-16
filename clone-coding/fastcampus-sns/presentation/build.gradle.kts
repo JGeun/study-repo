@@ -37,9 +37,16 @@ android {
 	composeOptions {
 		kotlinCompilerExtensionVersion = "1.5.6"
 	}
-	kapt {
-		correctErrorTypes = true
+	packaging {
+		resources {
+			excludes += "/META-INF/{AL2.0,LGPL2.1}"
+		}
 	}
+}
+
+composeCompiler {
+	reportsDestination = layout.buildDirectory.dir("compose_compiler")
+	stabilityConfigurationFile = rootProject.layout.projectDirectory.file("stability_config.conf")
 }
 
 dependencies {
