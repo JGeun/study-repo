@@ -7,6 +7,7 @@ import androidx.compose.material3.TextField
 import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.unit.dp
 
 /**
@@ -19,7 +20,8 @@ import androidx.compose.ui.unit.dp
 fun FCTextField(
 	modifier: Modifier = Modifier,
 	value: String,
-	onValueChange: (String) -> Unit
+	onValueChange: (String) -> Unit,
+	visualTransformation: VisualTransformation = VisualTransformation.None,
 ) {
 	TextField(
 		modifier = modifier,
@@ -28,6 +30,7 @@ fun FCTextField(
 		colors = TextFieldDefaults.textFieldColors(
 			containerColor = MaterialTheme.colorScheme.primaryContainer,
 		),
+		visualTransformation = visualTransformation,
 		shape = RoundedCornerShape(8.dp),
 	)
 }
