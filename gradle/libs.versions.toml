@@ -10,7 +10,7 @@ activityCompose = "1.9.3"
 composeBom = "2024.04.01"
 okhttp = "4.12.0"
 retrofit = "2.9.0"
-hilt = "2.51.1"
+hilt = "2.53.1"
 orbit = "6.1.0"
 coil = "2.3.0"
 paging = "3.2.1"
@@ -52,7 +52,7 @@ kotlinx-serialization-json = { group = "org.jetbrains.kotlinx", name = "kotlinx-
 # hilt
 hilt = { group = "com.google.dagger", name = "hilt-android", version.ref = "hilt" }
 hilt-compiler = { group = "com.google.dagger", name = "hilt-android-compiler", version.ref = "hilt" }
-hilt-navigation-compose = { group = "androidx.hilt" , name = "hilt-navigation-compose", version = "1.0.0"}
+hilt-navigation-compose = { group = "androidx.hilt" , name = "hilt-navigation-compose", version = "1.2.0"}
 
 # orbit
 orbit-core = { group = "org.orbit-mvi", name = "orbit-core", version.ref = "orbit"}

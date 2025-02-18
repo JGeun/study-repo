@@ -5,11 +5,14 @@ import androidx.compose.runtime.Immutable
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.jgeun.fastcampus.sns.domain.usecase.LoginUseCase
+import com.jgeun.fastcampus.sns.domain.usecase.SetTokenUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.CoroutineExceptionHandler
 import kotlinx.coroutines.launch
 import org.orbitmvi.orbit.Container
 import org.orbitmvi.orbit.ContainerHost
+import org.orbitmvi.orbit.annotation.OrbitExperimental
+import org.orbitmvi.orbit.syntax.simple.blockingIntent
 import org.orbitmvi.orbit.syntax.simple.intent
 import org.orbitmvi.orbit.syntax.simple.postSideEffect
 import org.orbitmvi.orbit.syntax.simple.reduce
@@ -24,6 +27,7 @@ import javax.inject.Inject
 @HiltViewModel
 class LoginViewModel @Inject constructor(
 	private val loginUseCase: LoginUseCase,
+	private val setTokenUseCase: SetTokenUseCase,
 ) : ViewModel(), ContainerHost<LoginState, LoginSideEffect> {
 
 	override val container: Container<LoginState, LoginSideEffect> = container(
@@ -42,16 +46,20 @@ class LoginViewModel @Inject constructor(
 		val password = state.password
 
 		val token = loginUseCase(id, password).getOrThrow()
-		postSideEffect(LoginSideEffect.Toast(message = "token = $token"))
+		setTokenUseCase(token)
+//		postSideEffect(LoginSideEffect.Toast(message = "token = $token"))
+		postSideEffect(LoginSideEffect.NavigateToMainActivity)
 	}
 
-	fun onIdChange(id: String) = intent {
+	@OptIn(OrbitExperimental::class)
+	fun onIdChange(id: String) = blockingIntent {
 		reduce {
 			state.copy(id = id)
 		}
 	}
 
-	fun onPasswordChange(password: String) = intent {
+	@OptIn(OrbitExperimental::class)
+	fun onPasswordChange(password: String) = blockingIntent {
 		reduce {
 			state.copy(password = password)
 		}
@@ -66,4 +74,5 @@ data class LoginState(
 
 sealed interface LoginSideEffect {
 	data class Toast(val message: String): LoginSideEffect
+	data object NavigateToMainActivity: LoginSideEffect
 }

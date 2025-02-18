@@ -9,7 +9,7 @@ interface SignUpUseCase {
 
 	suspend operator fun invoke(
 		id:String,
-		userName: String,
+		username: String,
 		password: String
-	): Result<Unit>
+	): Result<Boolean>
 }
