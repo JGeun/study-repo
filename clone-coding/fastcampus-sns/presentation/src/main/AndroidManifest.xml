@@ -3,7 +3,8 @@
 
     <application>
         <activity android:name=".login.LoginActivity" />
-        <activity android:name=".MainActivity" />
+        <activity android:name=".main.MainActivity" />
+        <activity android:name=".main.writing.WritingActivity" />
 
         <activity android:name=".SplashActivity"
             android:exported="true">
@@ -13,5 +14,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
     </application>
 </manifest>

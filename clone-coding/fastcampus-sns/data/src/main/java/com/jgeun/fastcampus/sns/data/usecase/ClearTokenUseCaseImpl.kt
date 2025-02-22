@@ -1,9 +1,7 @@
 package com.jgeun.fastcampus.sns.data.usecase
 
 import com.jgeun.fastcampus.sns.data.UserDataStore
-import com.jgeun.fastcampus.sns.domain.usecase.ClearTokenUseCase
-import com.jgeun.fastcampus.sns.domain.usecase.GetTokenUseCase
-import com.jgeun.fastcampus.sns.domain.usecase.SetTokenUseCase
+import com.jgeun.fastcampus.sns.domain.usecase.login.ClearTokenUseCase
 import javax.inject.Inject
 
 /**
@@ -15,7 +13,7 @@ class ClearTokenUseCaseImpl @Inject constructor(
 	private val userDataStore: UserDataStore
 ) : ClearTokenUseCase {
 
-	override suspend fun invoke() {
-		return userDataStore.clear()
+	override suspend fun invoke() = kotlin.runCatching {
+		userDataStore.clear()
 	}
 }

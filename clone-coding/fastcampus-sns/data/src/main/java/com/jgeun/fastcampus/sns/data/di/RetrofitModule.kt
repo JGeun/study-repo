@@ -3,6 +3,7 @@ package com.jgeun.fastcampus.sns.data.di
 import android.util.Log
 import com.jakewharton.retrofit2.converter.kotlinx.serialization.asConverterFactory
 import com.jgeun.fastcampus.sns.data.constant.FC_HOST
+import com.jgeun.fastcampus.sns.data.retrofit.FCInterceptor
 import com.jgeun.fastcampus.sns.data.retrofit.UserService
 import dagger.Module
 import dagger.Provides
@@ -33,9 +34,10 @@ import retrofit2.Retrofit
 object RetrofitModule {
 
 	@Provides
-	fun provideOkHttpClient(): OkHttpClient {
+	fun provideOkHttpClient(interceptor: FCInterceptor): OkHttpClient {
 		return OkHttpClient
 			.Builder()
+			.addInterceptor(interceptor)
 			.addNetworkInterceptor(
 				HttpLoggingInterceptor { message ->
 					Log.w("Network Response", message)

@@ -2,7 +2,7 @@ package com.jgeun.fastcampus.sns.presentation.login
 
 import androidx.compose.runtime.Immutable
 import androidx.lifecycle.ViewModel
-import com.jgeun.fastcampus.sns.domain.usecase.SignUpUseCase
+import com.jgeun.fastcampus.sns.domain.usecase.login.SignUpUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.CoroutineExceptionHandler
 import org.orbitmvi.orbit.Container

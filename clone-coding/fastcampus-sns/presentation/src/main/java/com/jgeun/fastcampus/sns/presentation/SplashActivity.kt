@@ -4,9 +4,9 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.lifecycle.lifecycleScope
-import com.jgeun.fastcampus.sns.domain.usecase.GetTokenUseCase
+import com.jgeun.fastcampus.sns.domain.usecase.login.GetTokenUseCase
 import com.jgeun.fastcampus.sns.presentation.login.LoginActivity
-import com.jgeun.fastcampus.sns.presentation.login.LoginState
+import com.jgeun.fastcampus.sns.presentation.main.MainActivity
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 import javax.inject.Inject

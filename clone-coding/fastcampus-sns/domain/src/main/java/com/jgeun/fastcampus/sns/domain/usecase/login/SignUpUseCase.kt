@@ -1,4 +1,4 @@
-package com.jgeun.fastcampus.sns.domain.usecase
+package com.jgeun.fastcampus.sns.domain.usecase.login
 
 /**
  *

@@ -1,8 +1,7 @@
 package com.jgeun.fastcampus.sns.data.usecase
 
 import com.jgeun.fastcampus.sns.data.UserDataStore
-import com.jgeun.fastcampus.sns.domain.usecase.GetTokenUseCase
-import com.jgeun.fastcampus.sns.domain.usecase.SetTokenUseCase
+import com.jgeun.fastcampus.sns.domain.usecase.login.SetTokenUseCase
 import javax.inject.Inject
 
 /**

@@ -5,11 +5,13 @@ import com.jgeun.fastcampus.sns.data.usecase.GetTokenUseCaseImpl
 import com.jgeun.fastcampus.sns.data.usecase.LoginUseCaseImpl
 import com.jgeun.fastcampus.sns.data.usecase.SetTokenUseCaseImpl
 import com.jgeun.fastcampus.sns.data.usecase.SignUpUseCaseImpl
-import com.jgeun.fastcampus.sns.domain.usecase.ClearTokenUseCase
-import com.jgeun.fastcampus.sns.domain.usecase.GetTokenUseCase
-import com.jgeun.fastcampus.sns.domain.usecase.LoginUseCase
-import com.jgeun.fastcampus.sns.domain.usecase.SetTokenUseCase
-import com.jgeun.fastcampus.sns.domain.usecase.SignUpUseCase
+import com.jgeun.fastcampus.sns.data.usecase.main.setting.GetMyUserUseCaseImpl
+import com.jgeun.fastcampus.sns.domain.usecase.login.ClearTokenUseCase
+import com.jgeun.fastcampus.sns.domain.usecase.login.GetTokenUseCase
+import com.jgeun.fastcampus.sns.domain.usecase.login.LoginUseCase
+import com.jgeun.fastcampus.sns.domain.usecase.login.SetTokenUseCase
+import com.jgeun.fastcampus.sns.domain.usecase.login.SignUpUseCase
+import com.jgeun.fastcampus.sns.domain.usecase.main.setting.GetMyUserUseCase
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn
@@ -35,6 +37,10 @@ abstract class UserModule {
 
 	@Binds
 	abstract fun bindSetTokenUseCase(uc: SetTokenUseCaseImpl): SetTokenUseCase
+
 	@Binds
 	abstract fun bindClearTokenUseCase(uc: ClearTokenUseCaseImpl): ClearTokenUseCase
+
+	@Binds
+	abstract fun bindGetMyUserUseCase(uc: GetMyUserUseCaseImpl): GetMyUserUseCase
 }

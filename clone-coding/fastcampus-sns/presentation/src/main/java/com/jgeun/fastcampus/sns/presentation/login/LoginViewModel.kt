@@ -1,14 +1,11 @@
 package com.jgeun.fastcampus.sns.presentation.login
 
-import android.util.Log
 import androidx.compose.runtime.Immutable
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
-import com.jgeun.fastcampus.sns.domain.usecase.LoginUseCase
-import com.jgeun.fastcampus.sns.domain.usecase.SetTokenUseCase
+import com.jgeun.fastcampus.sns.domain.usecase.login.LoginUseCase
+import com.jgeun.fastcampus.sns.domain.usecase.login.SetTokenUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.CoroutineExceptionHandler
-import kotlinx.coroutines.launch
 import org.orbitmvi.orbit.Container
 import org.orbitmvi.orbit.ContainerHost
 import org.orbitmvi.orbit.annotation.OrbitExperimental

@@ -1,9 +1,8 @@
 package com.jgeun.fastcampus.sns.data.usecase
 
-import com.jgeun.fastcampus.sns.data.model.LoginParam
 import com.jgeun.fastcampus.sns.data.model.SignUpParam
 import com.jgeun.fastcampus.sns.data.retrofit.UserService
-import com.jgeun.fastcampus.sns.domain.usecase.SignUpUseCase
+import com.jgeun.fastcampus.sns.domain.usecase.login.SignUpUseCase
 import javax.inject.Inject
 
 /**
