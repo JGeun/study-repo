@@ -4,6 +4,7 @@ import android.util.Log
 import com.jakewharton.retrofit2.converter.kotlinx.serialization.asConverterFactory
 import com.jgeun.fastcampus.sns.data.constant.FC_HOST
 import com.jgeun.fastcampus.sns.data.retrofit.FCInterceptor
+import com.jgeun.fastcampus.sns.data.retrofit.FileService
 import com.jgeun.fastcampus.sns.data.retrofit.UserService
 import dagger.Module
 import dagger.Provides
@@ -70,5 +71,10 @@ object RetrofitModule {
 	@Provides
 	fun provideUserService(retrofit: Retrofit): UserService {
 		return retrofit.create(UserService::class.java)
+	}
+
+	@Provides
+	fun provideFileService(retrofit: Retrofit): FileService {
+		return retrofit.create(FileService::class.java)
 	}
 }

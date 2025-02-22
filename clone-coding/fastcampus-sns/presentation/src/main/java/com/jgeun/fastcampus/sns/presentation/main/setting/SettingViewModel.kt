@@ -1,10 +1,14 @@
 package com.jgeun.fastcampus.sns.presentation.main.setting
 
+import android.net.Uri
+import android.util.Log
 import androidx.compose.runtime.Immutable
 import androidx.lifecycle.ViewModel
 import com.jgeun.fastcampus.sns.domain.model.User
 import com.jgeun.fastcampus.sns.domain.usecase.login.ClearTokenUseCase
 import com.jgeun.fastcampus.sns.domain.usecase.main.setting.GetMyUserUseCase
+import com.jgeun.fastcampus.sns.domain.usecase.main.setting.SetMyUserUseCase
+import com.jgeun.fastcampus.sns.domain.usecase.main.setting.SetProfileImageUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.CoroutineExceptionHandler
 import org.orbitmvi.orbit.Container
@@ -23,13 +27,16 @@ import javax.inject.Inject
 @HiltViewModel
 class SettingViewModel @Inject constructor(
 	private val clearTokenUseCase: ClearTokenUseCase,
-	private val getMyUserUseCase: GetMyUserUseCase
+	private val getMyUserUseCase: GetMyUserUseCase,
+	private val setMyUserUseCase: SetMyUserUseCase,
+	private val setProfileImageUseCase: SetProfileImageUseCase
 ) : ViewModel(), ContainerHost<SettingState, SettingSideEffect> {
 
 	override val container: Container<SettingState, SettingSideEffect> = container(
 		initialState = SettingState(),
 		buildSettings = {
 			this.exceptionHandler = CoroutineExceptionHandler { _, throwable ->
+				Log.e("SettingViewModel", "Exception: ${throwable.message.orEmpty()}")
 				intent { postSideEffect(SettingSideEffect.Toast(throwable.message.orEmpty())) }
 			}
 		}
@@ -49,9 +56,22 @@ class SettingViewModel @Inject constructor(
 		}
 	}
 
-	fun onLogoutClick()  = intent {
+	fun onLogoutClick() = intent {
 		clearTokenUseCase().getOrThrow()
 		postSideEffect(SettingSideEffect.NavigateToLoginActivity)
+	}
+
+	fun onUsernameChange(username: String) = intent {
+		setMyUserUseCase(
+			username = username
+		).getOrThrow()
+		load()
+	}
+
+	fun onImageChange(contentUri: Uri?) = intent {
+		setProfileImageUseCase(
+			contentUri = contentUri.toString()
+		).getOrThrow()
 	}
 }
 
