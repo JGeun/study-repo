@@ -84,4 +84,8 @@ dependencies {
 	// coil
 	implementation(libs.coil)
 	implementation(libs.coil.compose)
+
+	// paging
+	implementation(libs.paging.compose)
+
 }

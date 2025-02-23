@@ -59,4 +59,8 @@ dependencies {
 	kapt(libs.hilt.compiler)
 
 	implementation(libs.androidx.lifecycle.service)
+
+	implementation(libs.paging.common)
+	implementation(libs.paging.runtime)
+	implementation(libs.paging.compose)
 }
