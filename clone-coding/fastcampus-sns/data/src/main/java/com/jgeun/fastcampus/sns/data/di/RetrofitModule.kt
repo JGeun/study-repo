@@ -3,6 +3,7 @@ package com.jgeun.fastcampus.sns.data.di
 import android.util.Log
 import com.jakewharton.retrofit2.converter.kotlinx.serialization.asConverterFactory
 import com.jgeun.fastcampus.sns.data.constant.FC_HOST
+import com.jgeun.fastcampus.sns.data.retrofit.BoardService
 import com.jgeun.fastcampus.sns.data.retrofit.FCInterceptor
 import com.jgeun.fastcampus.sns.data.retrofit.FileService
 import com.jgeun.fastcampus.sns.data.retrofit.UserService
@@ -76,5 +77,10 @@ object RetrofitModule {
 	@Provides
 	fun provideFileService(retrofit: Retrofit): FileService {
 		return retrofit.create(FileService::class.java)
+	}
+
+	@Provides
+	fun provideBoardService(retrofit: Retrofit): BoardService {
+		return retrofit.create(BoardService::class.java)
 	}
 }

@@ -3,6 +3,7 @@ package com.jgeun.fastcampus.sns.presentation.main.writing
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import com.jgeun.fastcampus.sns.presentation.theme.ConnectedTheme
 import dagger.hilt.android.AndroidEntryPoint
 
 /**
@@ -17,7 +18,9 @@ class WritingActivity : ComponentActivity() {
 		super.onCreate(savedInstanceState)
 
 		setContent {
-
+			ConnectedTheme {
+				WritingNavHost{ finish() }
+			}
 		}
 	}
 }

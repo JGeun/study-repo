@@ -4,6 +4,7 @@ plugins {
 	alias(libs.plugins.hilt)
 	id("kotlin-kapt")
 	alias(libs.plugins.kotlin.serialization)
+	alias(libs.plugins.kotlin.parcelize)
 }
 
 android {
@@ -56,4 +57,6 @@ dependencies {
 
 	implementation(libs.hilt)
 	kapt(libs.hilt.compiler)
+
+	implementation(libs.androidx.lifecycle.service)
 }

@@ -32,7 +32,6 @@ fun FCProfileImage(
     profileImageUrl: String? = null,
     borderWidth: Dp = 4.dp
 ) {
-
     Box {
         val rainbowColorsBrush = remember {
             Brush.sweepGradient(
