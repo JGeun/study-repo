@@ -5,6 +5,7 @@ plugins {
 	id("kotlin-kapt")
 	alias(libs.plugins.kotlin.serialization)
 	alias(libs.plugins.kotlin.parcelize)
+	id("com.google.devtools.ksp")
 }
 
 android {
@@ -63,4 +64,8 @@ dependencies {
 	implementation(libs.paging.common)
 	implementation(libs.paging.runtime)
 	implementation(libs.paging.compose)
+
+	implementation(libs.room.runtime)
+	implementation(libs.room.paging)
+	ksp(libs.room.compiler)
 }

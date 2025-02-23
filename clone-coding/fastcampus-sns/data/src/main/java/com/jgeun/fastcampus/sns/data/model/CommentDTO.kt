@@ -15,8 +15,7 @@ data class CommentDTO(
 	val createdAt: String,
 	val createUserId: Long,
 	val createUserName: String,
-	val profileImageUrl: String,
-	val commentList: List<CommentDTO>
+	val profileImageUrl: String
 )
 
 fun CommentDTO.toDomainModel(): Comment {
