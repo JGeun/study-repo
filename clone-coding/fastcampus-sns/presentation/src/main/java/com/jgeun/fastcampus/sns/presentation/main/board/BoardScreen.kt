@@ -15,6 +15,7 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.paging.compose.LazyPagingItems
 import androidx.paging.compose.collectAsLazyPagingItems
+import com.jgeun.fastcampus.sns.domain.model.Comment
 import com.jgeun.fastcampus.sns.presentation.model.main.board.BoardCardModel
 import com.jgeun.fastcampus.sns.presentation.theme.ConnectedTheme
 import org.orbitmvi.orbit.compose.collectAsState
@@ -30,21 +31,26 @@ fun BoardScreen(
 	viewModel: BoardViewModel
 ) {
 	val state = viewModel.collectAsState().value
-	var modelForDialog: BoardCardModel? by remember { mutableStateOf(null) }
+	var modelForDialog:BoardCardModel? by remember { mutableStateOf(null) }
 	val context = LocalContext.current
 
-	viewModel.collectSideEffect { sideEffect ->
-		when (sideEffect) {
+	viewModel.collectSideEffect {sideEffect->
+		when(sideEffect){
 			is BoardSideEffect.Toast -> Toast.makeText(context, sideEffect.message, Toast.LENGTH_SHORT).show()
 		}
 	}
 
 	BoardScreen(
+		myUserId = state.myUserId,
 		boardCardModels = state.boardCardModelFlow.collectAsLazyPagingItems(),
 		deletedBoardIds = state.deletedBoardIds,
+		addedComments = state.addedComments,
+		deletedComments = state.deletedComments,
 		onOptionClick = { modelForDialog = it },
-		onReplyClick = {}
-	)
+		onDeleteComment = viewModel::onDeleteComment,
+		onCommentSend = viewModel::onCommentSend,
+
+		)
 	BoardOptionDialog(
 		model = modelForDialog,
 		onDismissRequest = { modelForDialog = null },
@@ -55,10 +61,14 @@ fun BoardScreen(
 
 @Composable
 private fun BoardScreen(
+	myUserId:Long,
 	boardCardModels: LazyPagingItems<BoardCardModel>,
-	deletedBoardIds: Set<Long> = emptySet(),
+	deletedBoardIds:Set<Long> = emptySet(),
+	addedComments:Map<Long, List<Comment>>,
+	deletedComments:Map<Long, List<Comment>>,
 	onOptionClick: (BoardCardModel) -> Unit,
-	onReplyClick: (BoardCardModel) -> Unit,
+	onDeleteComment:(Long, Comment)->Unit,
+	onCommentSend:(Long, String)->Unit
 ) {
 	Surface {
 		LazyColumn(
@@ -69,16 +79,22 @@ private fun BoardScreen(
 				key = { index -> boardCardModels[index]?.boardId ?: index },
 			) { index ->
 				boardCardModels[index]?.run {
-					if (!deletedBoardIds.contains(this.boardId)) {
+					val model = this
+					if(!deletedBoardIds.contains(this.boardId)){
 						BoardCard(
-							username = this.username,
-							images = this.images,
-							text = this.text,
-							onOptionClick = { onOptionClick(this) },
-							onReplyClick = { onReplyClick(this) }
+							isMine = model.userId == myUserId,
+							boardId = model.boardId,
+							username = model.username,
+							images = model.images,
+							text = model.text,
+							comments = model.comments + addedComments[boardId].orEmpty() - deletedComments[boardId].orEmpty(),
+							onOptionClick = { onOptionClick(model) },
+							onDeleteComment = onDeleteComment,
+							onCommentSend = onCommentSend
 						)
 					}
 				}
+
 			}
 		}
 	}
@@ -90,7 +106,7 @@ private fun BoardScreen(
 private fun BoardScreenPreview() {
 	ConnectedTheme {
 //        BoardScreen(
-//            boardCardModels = ,
+//            boardCardModels = empty,
 //            onOptionClick = {},
 //            onReplyClick = {}
 //        )

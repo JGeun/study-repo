@@ -20,7 +20,9 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.jgeun.fastcampus.sns.domain.model.Comment
 import com.jgeun.fastcampus.sns.presentation.component.FCImagePager
+import com.jgeun.fastcampus.sns.presentation.main.board.comment.CommentDialog
 import com.jgeun.fastcampus.sns.presentation.theme.ConnectedTheme
 
 /**
@@ -30,23 +32,32 @@ import com.jgeun.fastcampus.sns.presentation.theme.ConnectedTheme
  */
 @Composable
 fun BoardCard(
+	isMine:Boolean,
+	boardId: Long,
 	profileImageUrl: String? = null,
 	username: String,
 	images: List<String>,
 	text: String,
+	comments: List<Comment>,
 	onOptionClick: () -> Unit,
-	onReplyClick: () -> Unit,
+	onDeleteComment: (Long, Comment) -> Unit,
+	onCommentSend: (Long, String) -> Unit
 ) {
+	var commentDialogVisible by remember { mutableStateOf(false) }
 	Surface {
 		Column(
 			modifier =
-			Modifier.padding(horizontal = 16.dp, vertical = 8.dp)
+			Modifier
+				.padding(horizontal = 16.dp, vertical = 8.dp)
 				.fillMaxWidth()
-				.background(color = MaterialTheme.colorScheme.primaryContainer, shape = RoundedCornerShape(16.dp))
-			,
+				.background(
+					color = MaterialTheme.colorScheme.primaryContainer,
+					shape = RoundedCornerShape(16.dp)
+				),
 		) {
 			// 헤더
 			BoardHeader(
+				isMine = isMine,
 				modifier = Modifier.fillMaxWidth(),
 				profileImageUrl = profileImageUrl,
 				username = username,
@@ -55,7 +66,9 @@ fun BoardCard(
 			// 이미지 페이저
 			if (images.isNotEmpty()) {
 				FCImagePager(
-					modifier = Modifier.fillMaxWidth().aspectRatio(1f),
+					modifier = Modifier
+						.fillMaxWidth()
+						.aspectRatio(1f),
 					images = images,
 				)
 			}
@@ -92,13 +105,22 @@ fun BoardCard(
 					.padding(top = 8.dp)
 					.padding(horizontal = 8.dp)
 					.align(Alignment.End),
-				onClick = onReplyClick
+				onClick = { commentDialogVisible = true }
 			) {
-				Text(text = "댓글")
+				Text(text = "${comments.size} 댓글")
 			}
 		}
-
 	}
+
+	CommentDialog(
+		isMine = isMine,
+		visible = commentDialogVisible,
+		comments = comments,
+		onDismissRequest = { commentDialogVisible = false },
+		onDeleteComment = { comment -> onDeleteComment(boardId, comment) },
+		onCloseClick = { commentDialogVisible = false },
+		onCommentSend = { text -> onCommentSend(boardId, text) }
+	)
 }
 
 @Preview
@@ -106,12 +128,19 @@ fun BoardCard(
 private fun BoardCardPreview() {
 	ConnectedTheme {
 		BoardCard(
+			isMine = true,
+			boardId = -1L,
 			profileImageUrl = null,
 			username = "Fast Campus",
 			images = emptyList(),
 			text = "내용1\n내용2\n내용3\n",
 			onOptionClick = {},
-			onReplyClick = {}
+			comments = emptyList(),
+			onDeleteComment = { boardId, comment ->
+
+			}, onCommentSend = { boardId, text ->
+
+			}
 		)
 	}
 }

@@ -17,7 +17,8 @@ import com.jgeun.fastcampus.sns.presentation.model.main.board.BoardCardModel
 import com.jgeun.fastcampus.sns.presentation.theme.ConnectedTheme
 
 /**
- * @author soohwan.ok
+ * @author   JGeun
+ * @created  2025/02/23
  */
 @Composable
 fun BoardOptionDialog(

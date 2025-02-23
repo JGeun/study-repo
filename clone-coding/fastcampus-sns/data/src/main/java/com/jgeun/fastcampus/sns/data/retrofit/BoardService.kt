@@ -19,19 +19,30 @@ interface BoardService {
 
 	@GET("boards")
 	suspend fun getBoards(
-		@Query("page") page:Int,
-		@Query("size") size:Int,
-
-		):CommonResponse<List<BoardDTO>>
+		@Query("page") page: Int,
+		@Query("size") size: Int
+	): CommonResponse<List<BoardDTO>>
 
 	@POST("boards")
 	suspend fun postBoard(
 		@Body requestBody: RequestBody
-	):CommonResponse<Long>
+	): CommonResponse<Long>
 
 
 	@DELETE("boards/{id}")
 	suspend fun deleteBoard(
-		@Path("id") id:Long
-	):CommonResponse<Long>
+		@Path("id") id: Long
+	): CommonResponse<Long>
+
+	@POST("boards/{id}/comments")
+	suspend fun postComment(
+		@Path("id") boardId: Long,
+		@Body requestBody: RequestBody
+	): CommonResponse<Long>
+
+	@DELETE("boards/{boardId}/comments/{commentId}")
+	suspend fun deleteComment(
+		@Path("boardId") boardId: Long,
+		@Path("commentId") commentId: Long,
+	): CommonResponse<Long>
 }

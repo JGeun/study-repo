@@ -20,14 +20,16 @@ import com.jgeun.fastcampus.sns.presentation.component.FCProfileImage
 import com.jgeun.fastcampus.sns.presentation.theme.ConnectedTheme
 
 /**
- * @author soohwan.ok
+ * @author   JGeun
+ * @created  2025/02/23
  */
 @Composable
 fun BoardHeader(
 	modifier: Modifier = Modifier,
+	isMine :Boolean,
 	profileImageUrl: String? = null,
 	username: String,
-	onOptionClick: () -> Unit
+	onOptionClick:()->Unit
 ) {
 	Row(
 		modifier = modifier,
@@ -36,8 +38,9 @@ fun BoardHeader(
 		// 프로필 이미지
 		FCProfileImage(
 			modifier = Modifier
-                .padding(start = 8.dp)
-                .size(36.dp),
+				.padding(vertical = 8.dp)
+				.padding(start = 8.dp)
+				.size(36.dp),
 			profileImageUrl = profileImageUrl,
 			borderWidth = 1.dp,
 		)
@@ -48,12 +51,14 @@ fun BoardHeader(
 			style = MaterialTheme.typography.titleMedium
 		)
 		// 옵션 버튼
-		Spacer(modifier = Modifier.weight(1f))
-		IconButton(onClick = onOptionClick) {
-			Icon(
-				imageVector = Icons.Filled.MoreVert,
-				contentDescription = "옵션"
-			)
+		if(isMine){
+			Spacer(modifier = Modifier.weight(1f))
+			IconButton(onClick = onOptionClick) {
+				Icon(
+					imageVector = Icons.Filled.MoreVert,
+					contentDescription = "옵션"
+				)
+			}
 		}
 	}
 }
@@ -64,6 +69,7 @@ private fun BoardHeaderPreview() {
 	ConnectedTheme {
 		Surface {
 			BoardHeader(
+				isMine = true,
 				profileImageUrl = null,
 				username = "Fast Campus",
 				onOptionClick = {}
