@@ -88,4 +88,5 @@ dependencies {
 	// paging
 	implementation(libs.paging.compose)
 
+	testImplementation(libs.kotlinx.coroutines.test)
 }
