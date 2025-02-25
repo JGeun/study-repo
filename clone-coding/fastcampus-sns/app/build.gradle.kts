@@ -86,4 +86,12 @@ dependencies {
 	androidTestImplementation(libs.hilt.android.testing)
 	// ...with Kotlin.
 	kaptAndroidTest(libs.hilt.compiler)
+
+	// For Robolectric tests.
+	testImplementation(libs.hilt.android.testing)
+	// ...with Kotlin.
+	kaptTest(libs.hilt.compiler)
+
+	// robolectric
+	testImplementation(libs.robolectric)
 }
