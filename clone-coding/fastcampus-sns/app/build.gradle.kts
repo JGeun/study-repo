@@ -18,7 +18,7 @@ android {
 		versionCode = 1
 		versionName = "1.0"
 
-		testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+		testInstrumentationRunner = "com.jgeun.fastcampus.sns.app.CustomRunner"
 	}
 
 	buildTypes {
@@ -81,4 +81,9 @@ dependencies {
 
 	implementation(libs.hilt)
 	kapt(libs.hilt.compiler)
+
+	// For instrumented tests.
+	androidTestImplementation(libs.hilt.android.testing)
+	// ...with Kotlin.
+	kaptAndroidTest(libs.hilt.compiler)
 }
