@@ -32,11 +32,13 @@ android {
 
 dependencies {
 	implementation(project(":clone-coding:fastcampus-sns:app"))
+	implementation(project(":clone-coding:fastcampus-sns:data"))
+
 	implementation(libs.androidx.core.ktx)
 	testImplementation(libs.junit)
 	androidTestImplementation(libs.androidx.junit)
 	androidTestImplementation(libs.androidx.espresso.core)
 
-	implementation("com.google.dagger:hilt-android:2.48.1")
-	kapt("com.google.dagger:hilt-compiler:2.48.1")
+	implementation(libs.hilt)
+	kapt(libs.hilt.compiler)
 }

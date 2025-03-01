@@ -1,5 +1,6 @@
 package com.jgeun.fastcampus.sns.app
 
+import com.jgeun.fastcampus.sns.data.UserDataStore
 import dagger.Module
 import dagger.hilt.EntryPoint
 import dagger.hilt.InstallIn
@@ -15,4 +16,6 @@ import dagger.hilt.components.SingletonComponent
 interface FooEntryPoint {
 
     fun foo(): Foo
+
+    fun userDataStore(): UserDataStore
 }
