@@ -5,7 +5,6 @@ hiltAndroidTesting = "2.51.1"
 hiltCore = "2.53.1"
 hiltWork = "1.2.0"
 hiltCompiler = "1.2.0"
-javapoet = "1.14.2"
 kotlin = "2.1.0"
 coreKtx = "1.13.1"
 junit = "4.13.2"
@@ -36,7 +35,6 @@ androidx-hilt-compiler = { module = "androidx.hilt:hilt-compiler", version.ref =
 androidx-hilt-work = { module = "androidx.hilt:hilt-work", version.ref = "hiltWork" }
 androidx-work-runtime = { module = "androidx.work:work-runtime", version.ref = "workRuntime" }
 hilt-core = { module = "com.google.dagger:hilt-core", version.ref = "hiltCore" }
-javapoet = { module = "com.squareup:javapoet", version.ref = "javapoet" }
 junit = { group = "junit", name = "junit", version.ref = "junit" }
 androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }
 androidx-espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espressoCore" }
