@@ -2,6 +2,7 @@ package com.jgeun.fastcampus.sns.data.model
 
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.json.Json
+import kotlinx.serialization.encodeToString
 
 /**
  *

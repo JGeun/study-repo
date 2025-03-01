@@ -2,6 +2,7 @@ package com.jgeun.fastcampus.sns.data.database
 
 import androidx.room.TypeConverter
 import com.jgeun.fastcampus.sns.data.model.CommentDTO
+import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
 
 /**

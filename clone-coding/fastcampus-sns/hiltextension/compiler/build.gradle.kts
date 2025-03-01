@@ -9,12 +9,6 @@ java {
 	targetCompatibility = JavaVersion.VERSION_17
 }
 
-kotlin {
-	compilerOptions {
-		jvmTarget = org.jetbrains.kotlin.gradle.dsl.JvmTarget.JVM_17
-	}
-}
-
 dependencies {
 	implementation(project(":clone-coding:fastcampus-sns:hiltextension:annotations"))
 

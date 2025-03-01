@@ -1,7 +1,6 @@
 plugins {
 	alias(libs.plugins.android.application)
 	alias(libs.plugins.jetbrains.kotlin.android)
-	alias(libs.plugins.compose.compiler)
 	alias(libs.plugins.kotlin.serialization)
 	alias(libs.plugins.hilt)
 	id("kotlin-kapt")
@@ -38,16 +37,12 @@ android {
 		compose = true
 	}
 	composeOptions {
-		kotlinCompilerExtensionVersion = "1.5.6"
+		kotlinCompilerExtensionVersion = "1.5.3"
 	}
+	dynamicFeatures += setOf(":clone-coding:fastcampus-sns:dynamicfeature")
 	kapt {
 		correctErrorTypes = true
 	}
-}
-
-composeCompiler {
-	reportsDestination = layout.buildDirectory.dir("compose_compiler")
-	stabilityConfigurationFile = rootProject.layout.projectDirectory.file("stability_config.conf")
 }
 
 dependencies {

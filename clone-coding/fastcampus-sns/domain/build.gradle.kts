@@ -9,12 +9,6 @@ java {
 	targetCompatibility = JavaVersion.VERSION_17
 }
 
-kotlin {
-	compilerOptions {
-		jvmTarget = org.jetbrains.kotlin.gradle.dsl.JvmTarget.JVM_17
-	}
-}
-
 dependencies {
 	implementation(libs.kotlinx.serialization.json)
 

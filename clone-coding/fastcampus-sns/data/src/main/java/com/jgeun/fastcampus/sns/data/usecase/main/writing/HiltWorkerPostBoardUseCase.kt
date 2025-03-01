@@ -7,6 +7,7 @@ import androidx.work.workDataOf
 import com.jgeun.fastcampus.sns.data.model.BoardParcel
 import com.jgeun.fastcampus.sns.domain.model.Image
 import com.jgeun.fastcampus.sns.domain.usecase.main.writing.PostBoardUseCase
+import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
 import javax.inject.Inject
 
