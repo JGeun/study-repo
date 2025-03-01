@@ -2,13 +2,10 @@ package com.jgeun.fastcampus.sns.data.service
 
 import android.app.NotificationChannel
 import android.app.NotificationManager
-import android.content.Context
 import android.content.Intent
 import android.content.pm.ServiceInfo
 import android.os.Build
 import androidx.core.app.NotificationCompat
-import androidx.core.content.ContextCompat
-import androidx.core.content.IntentCompat
 import androidx.lifecycle.LifecycleService
 import androidx.lifecycle.lifecycleScope
 import com.jgeun.fastcampus.sns.data.model.BoardParam
@@ -40,7 +37,7 @@ class PostingService : LifecycleService() {
 		const val EXTRA_BOARD = "extra_board"
 		const val CHANNEL_ID = "게시글 업로드"
 		const val CHANNEL_NAME = "게시글 업로드 채널"
-		const val FOREGROUND_NOTIFICATION_CHANNEL = 1000
+		const val FOREGROUND_NOTIFICATION_ID = 1000
 	}
 
 	override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
@@ -80,13 +77,13 @@ class PostingService : LifecycleService() {
 		val notification = NotificationCompat.Builder(this, CHANNEL_ID).build()
 		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
 			startForeground(
-				FOREGROUND_NOTIFICATION_CHANNEL,
+				FOREGROUND_NOTIFICATION_ID,
 				notification,
 				ServiceInfo.FOREGROUND_SERVICE_TYPE_SHORT_SERVICE
 			)
 		} else {
 			startForeground(
-				FOREGROUND_NOTIFICATION_CHANNEL,
+				FOREGROUND_NOTIFICATION_ID,
 				notification
 			)
 		}

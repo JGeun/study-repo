@@ -2,6 +2,7 @@ package com.jgeun.fastcampus.sns.presentation.main.writing
 
 import androidx.compose.runtime.Immutable
 import androidx.lifecycle.ViewModel
+import com.jgeun.fastcampus.sns.domain.qualifier.Hilt
 import com.jgeun.fastcampus.sns.domain.model.Image
 import com.jgeun.fastcampus.sns.domain.usecase.main.writing.GetImageListUseCase
 import com.jgeun.fastcampus.sns.domain.usecase.main.writing.PostBoardUseCase
@@ -24,7 +25,7 @@ import javax.inject.Inject
 @HiltViewModel
 class WritingViewModel @Inject constructor(
 	private val getImageListUseCase: GetImageListUseCase,
-	private val postBoardUseCase: PostBoardUseCase
+	@Hilt private val postBoardUseCase: PostBoardUseCase
 ) : ViewModel(),
 	ContainerHost<WritingState, WritingSideEffect> {
 	override val container: Container<WritingState, WritingSideEffect> = container(

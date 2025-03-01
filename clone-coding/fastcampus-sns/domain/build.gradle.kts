@@ -19,4 +19,5 @@ dependencies {
 	implementation(libs.kotlinx.serialization.json)
 
 	implementation(libs.paging.common)
+	implementation("javax.inject:javax.inject:1")
 }

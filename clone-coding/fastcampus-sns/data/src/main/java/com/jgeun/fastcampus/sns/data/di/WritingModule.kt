@@ -1,6 +1,9 @@
 package com.jgeun.fastcampus.sns.data.di
 
+import com.jgeun.fastcampus.sns.domain.qualifier.Default
+import com.jgeun.fastcampus.sns.domain.qualifier.Hilt
 import com.jgeun.fastcampus.sns.data.usecase.main.writing.GetImageListUseCaseImpl
+import com.jgeun.fastcampus.sns.data.usecase.main.writing.HiltWorkerPostBoardUseCase
 import com.jgeun.fastcampus.sns.data.usecase.main.writing.PostBoardUseCaseImpl
 import com.jgeun.fastcampus.sns.domain.usecase.main.writing.GetImageListUseCase
 import com.jgeun.fastcampus.sns.domain.usecase.main.writing.PostBoardUseCase
@@ -8,7 +11,6 @@ import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn
 import dagger.hilt.android.components.ActivityRetainedComponent
-import dagger.hilt.android.scopes.ActivityRetainedScoped
 
 /**
  *
@@ -23,5 +25,10 @@ abstract class WritingModule {
 	abstract fun bindGetImageListUseCase(uc: GetImageListUseCaseImpl): GetImageListUseCase
 
 	@Binds
-	abstract fun bindPostBoardUseCase(uc: PostBoardUseCaseImpl): PostBoardUseCase
+	@Default
+	abstract fun bindDefaultPostBoardUseCase(uc: PostBoardUseCaseImpl): PostBoardUseCase
+
+	@Binds
+	@Hilt
+	abstract fun bindHiltPostBoardUseCase(uc: HiltWorkerPostBoardUseCase): PostBoardUseCase
 }
