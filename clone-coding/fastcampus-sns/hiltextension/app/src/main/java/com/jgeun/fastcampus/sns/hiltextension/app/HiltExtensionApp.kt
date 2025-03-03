@@ -1,7 +1,9 @@
 package com.jgeun.fastcampus.sns.hiltextension.app
 
 import android.app.Application
+import android.util.Log
 import dagger.hilt.android.HiltAndroidApp
+import javax.inject.Inject
 
 /**
  * @author   JGeun
@@ -9,4 +11,13 @@ import dagger.hilt.android.HiltAndroidApp
  */
 @HiltAndroidApp
 class HiltExtensionApp : Application() {
+
+    @Inject
+    lateinit var authenticator: Authenticator
+
+    override fun onCreate() {
+        super.onCreate()
+
+        Log.e("HiltExtensionApp", "authenticator: ${this::authenticator.isInitialized}")
+    }
 }
