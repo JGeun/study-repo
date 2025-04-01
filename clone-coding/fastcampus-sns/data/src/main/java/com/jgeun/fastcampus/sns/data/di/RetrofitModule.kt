@@ -27,7 +27,7 @@ import retrofit2.Retrofit
  *  *[FC_HOST]** 는 로컬 IP 서버 주소를 가리킵니다.
  *  개인 정보 보호를 위해 **직접 확인 후 기입**해주세요.
  **/
-private const val FC_HOST = "http://123.456.123.14:8080/"
+const val FC_HOST = "http://123.456.123.14:8080/"
 
 @Module
 @InstallIn(SingletonComponent::class)
