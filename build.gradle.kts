@@ -10,3 +10,18 @@ plugins {
 	alias(libs.plugins.kotlin.parcelize) apply false
 	alias(libs.plugins.com.android.dynamic.feature) apply false
 }
+
+subprojects {
+	tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile>().all {
+		kotlinOptions.freeCompilerArgs += listOf(
+			"-P",
+			"plugin:androidx.compose.compiler.plugins.kotlin:reportsDestination=" +
+					project.buildDir.absolutePath + "/compose_metrics"
+		)
+		kotlinOptions.freeCompilerArgs += listOf(
+			"-P",
+			"plugin:androidx.compose.compiler.plugins.kotlin:metricsDestination=" +
+					project.buildDir.absolutePath + "/compose_metrics"
+		)
+	}
+}

@@ -1,6 +1,6 @@
 package com.jgeun.fastcampus.sns.data.usecase.file
 
-import com.jgeun.fastcampus.sns.data.constant.FC_HOST
+import com.jgeun.fastcampus.sns.data.di.FC_HOST
 import com.jgeun.fastcampus.sns.data.retrofit.FileService
 import com.jgeun.fastcampus.sns.data.retrofit.UriRequestBody
 import com.jgeun.fastcampus.sns.domain.model.Image
